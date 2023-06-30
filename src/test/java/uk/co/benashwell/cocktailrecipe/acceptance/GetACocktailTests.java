@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import uk.co.benashwell.cocktailrecipe.acceptance.actors.HomeCocktailMaker;
-import uk.co.benashwell.cocktailrecipe.web.CocktailController;
 
 
-@WebMvcTest(controllers = CocktailController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class GetACocktailTests {
 
     @Autowired
@@ -26,7 +27,6 @@ class GetACocktailTests {
         homeCocktailMaker = new HomeCocktailMaker(mockMvc);
     }
 
-    @Disabled
     @Test
     @DisplayName("GIVEN I am a home cocktail maker" +
             " WHEN I get a cocktail recipe for a Mojito" +
